@@ -1,0 +1,43 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div id="filter-container-wrapper">
+    <button id="left-arrow" class="carousel-arrow"><i class="fa-solid fa-chevron-left"></i></button>
+    <div id="filter-container">
+        <div class="filter"><i class="fa-solid fa-fire"></i><div>Trending</div></div>
+        <div class="filter"><i class="fa-solid fa-bed"></i><div>Rooms</div></div>
+        <div class="filter"><i class="fa-solid fa-mountain-city"></i><div>Iconic Cities</div></div>
+        <div class="filter"><i class="fa-solid fa-mountain-sun"></i><div>Mountains</div></div>
+        <div class="filter"><i class="fa-solid fa-person-swimming"></i><div>Lakefront</div></div>
+        <div class="filter"><i class="fa-solid fa-umbrella-beach"></i><div>Beach</div></div>
+        <div class="filter"><i class="fa-solid fa-campground"></i><div>Camping</div></div>
+        <div class="filter"><i class="fa-solid fa-snowflake"></i><div>Arctic</div></div>
+        <div class="filter"><i class="fa-solid fa-utensils"></i><div>Restaurant</div></div>
+        <div class="filter"><i class="fa-solid fa-tree"></i><div>Treehouse</div></div>
+        <div class="filter"><i class="fa-solid fa-om"></i><div>Spiritual</div></div>
+    </div>
+    <button id="right-arrow" class="carousel-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 mt-4">
+    <% for(let listing of allListings){%>
+        <a href="/listings/<%= listing._id %>" class="card-link">
+            <div class="col">
+            <div class="card h-100" style="width: 16rem;">
+                <img src="<%= listing.image.url %>" style="height:15rem;" class="card-img-top listingImages" alt="<%= listing.image.filename %>">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <b class="fs-5">
+                            <%=listing.title%>
+                        </b><br>
+                        <%=listing.location%>,<%=listing.country%><br>
+                        &#8377 <%=listing.price%> / night
+                    </p>
+                </div>
+            </div>
+        </div>
+        </a>
+    <% }%>
+    </div>
+    <!-- <form method="GET" action="/listings/new">
+        <button type="submit">Create New</button>
+    </form> -->

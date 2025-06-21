@@ -1,0 +1,40 @@
+<% layout("layouts/boilerplate.ejs") %>
+<a href="/listings/<%= listing._id %>" class="btn btn-outline-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 45px; height: 45px; text-decoration: none;">
+  &#8592;
+</a>
+<br><br>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h3 class="mb-3">Edit Listing</h3>
+            <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <label for="title" class="form-label">Title</label> 
+                <input id="title" class="form-control mb-3" name="listing[title]" value="<%=listing.title%>" placeholder="<%=listing.title%>" type="text" required><br>
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" class="form-control mb-3"  name="listing[description]" type="text" placeholder="<%=listing.description %>" required><%=listing.description %></textarea><br>
+                <label for="location" class="form-label">Location</label>
+                <input id="location" class="form-control mb-3"  name="listing[location]" value="<%=listing.location%>" placeholder="<%=listing.location%>" type="text" required><br>
+                <label for="country" class="form-label">Country</label>
+                <input id="country" class="form-control mb-3" name="listing[country]" value="<%=listing.country%>" placeholder="<%=listing.country%>" type="text" required><br>
+                <label for="price" class="form-label">Price</label>
+                <input id="price" class="form-control mb-3"  name="listing[price]" value="<%=listing.price%>" placeholder="<%=listing.price%>" type="number" required><br>
+                <label for="image" class="form-label">Re-Upload Pictures of your property</label>
+                <div class="mb-3 row">
+                  <img src="<%= listing.image.url%>" class="col-4">
+                </div>
+                <input id="image" class="form-control mb-3" name="listing[image]" type="file">
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                      I Agree to Make Permanent Changes.
+                    </label>
+                    <div class="invalid-feedback">
+                      Please fill your declaration
+                    </div>
+                </div>
+                 <br>
+                <button type="submit" class="btn btn-primary col-2 offset-5">Update</button>
+            </form>
+        </div>
+    </div><br><br>
+
