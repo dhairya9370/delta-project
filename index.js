@@ -83,9 +83,11 @@ app.use("/",userRouter);
 //     const allListings= await Listing.find({});
 //     res.render("home.ejs",{allListings});
 // });
-
+app.get("/", (req, res, next) => {
+    res.redirect("/listings");
+});
 app.all("/:x", (req, res, next) => {
-    next(new myerr(404, "Page Not Found"));
+    res.redirect("/listings");
 });
 app.use((err,req,res,next)=>{
     let{status=500,message="Something Went Wrong!!!"}=err;
